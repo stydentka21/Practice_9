@@ -1,0 +1,64 @@
+Задание 1
+
+import time
+from random import randint
+l=[randint(-200,200) for i in range (1000)]
+l=sorted(l)
+start=time.time()
+def lin_find(arrey,k):
+    for i in range(len(arrey)):
+        if (arrey[i]==k):
+            return i 
+end=time.time()
+n=0
+print(l)
+print(lin_find(l,n))
+print(end-start) 
+
+Задание 2
+
+import time
+from random import randint
+lst=[randint(-200,200) for i in range (1000)]
+lst=sorted(lst)
+start=time.time()
+def bin_find(arrey,k):
+    left=0 
+    right=len(arrey)-1
+    while left<=right:
+        m=(left+right)//2
+        if arrey[m]==k:
+            return m 
+        if arrey[m]<k:
+            left=m+1 
+        elif arrey[m]>k:
+            right=m-1
+    return None
+end=time.time()
+n=145
+print(lst)
+print(bin_find(lst,n))
+print(end-start)
+
+Задание 3
+
+import time
+from random import randint
+lst=[randint(-8,8) for i in range (10)]
+lst=sorted(lst)
+start=time.time()
+def bin_rec_find(arrey, left, right, k):
+    if right>=left:
+        m=(left+right)//2
+        if arrey[m]==k:
+            return m 
+        elif arrey[m]>k:
+            return bin_rec_find(arrey, left, m-1, k)
+        else:
+            return bin_rec_find(arrey, m+1, right, k)
+    return None
+end=time.time()
+n=-6
+print(lst)
+print(bin_rec_find(lst, 0, len(lst)-1, n))
+print(end-start)
